@@ -1,0 +1,32 @@
+{
+    "manifest_version": 3,
+    "name": "Erudia Default Search",
+    "description": "Set Erudia as your default search engine.",
+    "version": "1.0",
+    "permissions": [
+      "searchProvider"
+    ],
+    "chrome_settings_overrides": {
+      "search_provider": {
+        "name": "Erudia",
+        "keyword": "erudia",
+        "search_url": "https://erudiasearch.com/?q={searchTerms}",
+        "favicon_url": "https://erudiasearch.com/favicon.ico",
+        "suggest_url": "https://suggestqueries.google.com/complete/search?client=chrome&ds=yt&q={searchTerms}",
+        "encoding": "UTF-8",
+        "is_default": true
+      }
+    },
+    "background": {
+      "service_worker": "background.js"
+    },
+    "action": {
+      "default_popup": "popup.html"
+    },
+    "icons": {
+      "16": "waterdrop.png",
+      "48": "waterdrop.png",
+      "128": "waterdrop.png"
+    }
+  }
+  

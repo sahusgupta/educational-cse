@@ -1,0 +1,75 @@
+<title>Erudia Search Results</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Calibri:wght@400;700&display=swap" rel="stylesheet"> 
+  <script async src="https://cse.google.com/cse.js?cx=32c7ae10af70a4818"></script>  
+</head>
+<body>
+  <div class="results-page">      
+    <div class="search-bar">
+      <form id="searchForm" action="results.html" onsubmit="handleSearch(event)">
+        <h3 class="logo">Erudia</h3>
+        <input type="text" id="query" name="q" placeholder="Search...">
+        <button type="submit">Search</button>
+      </form>
+    </div>
+    <div class="results-container" id="results">
+      <div class="gcse-searchresults-only" data-attribute="noIframe"></div>
+    </div>
+    <div class="ad-container" id="ad-container">
+      <!-- AdSense Code -->
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2797319465359427"
+     crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-format="fluid"
+     data-ad-layout-key="-gl+m-2y-7v+ph"
+     data-ad-client="ca-pub-2797319465359427"
+     data-ad-slot="1279350396"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    </div>
+    <footer>
+      <p class="mission">Our mission is to combat poverty by leveraging the power of your searches.</p>
+    </footer> 
+  </div>
+  <script>
+    function getQueryParameter(name) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(name);
+    }
+    function handleSearch(event) {
+      event.preventDefault();
+      const query = document.getElementById('query').value;
+      if (query) {
+        window.location.href = `results.html?q=${encodeURIComponent(query)}`;
+      }
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      const query = getQueryParameter('q');
+      if (query) {
+        document.getElementById('query').value = query;
+        document.getElementById('search-query').textContent = query;
+        const searchBox = document.querySelector('div.gcse-searchbox-only');
+        if (searchBox) {
+          searchBox.querySelector('input.gsc-input').value = query;
+          searchBox.querySelector('button.gsc-search-button').click();
+        }
+      }
+      // Move the ad container into the results
+      const resultsContainer = document.querySelector('.gcse-searchresults-only');
+      if (resultsContainer) {
+        const adContainer = document.getElementById('ad-container');
+        resultsContainer.insertBefore(adContainer, resultsContainer.childNodes[2]);
+      }
+      document.getElementById('searchForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const query = document.getElementById('query').value;
+        if (query) {
+          window.location.href = `results.html?q=${encodeURIComponent(query)}`;
+        }
+      });
+    });
+  </script>
+</body>
+</html>

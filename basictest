@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Test CSE</title>
+</head>
+<body>
+  <div id="cse">Loading</div>
+  <script async src="https://cse.google.com/cse?cx=32c7ae10af70a4818"></script>
+  <script>
+    window.onload = function() {
+      var searchElement = document.createElement('gcse:search');
+      document.getElementById('cse').appendChild(searchElement);
+    };
+  </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Erudia Search</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Calibri:wght@400;700&display=swap" rel="stylesheet">
+  <script async src="https://cse.google.com/cse.js?cx=32c7ae10af70a4818"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2797319465359427" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="container full-page">
+    <header>
+       <h1 class="header-content">Erudia</h1>
+    </header>
+    <main>
+      <div class="search-container">
+        <form id="searchForm" onsubmit="checkAppropriate(event)">
+          <input type="text" id="query" placeholder="Search...">
+          <button type="submit">Search</button>
+        </form>
+      </div>
+   
+    <div class="mission">
+      <p class="mission">Our mission is to empower underrepresented communities to recover financially with the power of your searches. Every search you make helps fight poverty around the world.</p>
+    </div>
+   </main>
+  </div>
+  <script>
+    async function checkAppropriate(event){
+      let search = document.getElementById('query').value;
+      const response = await fetch('http://127.0.0.1:5000/', {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          text: search
+        })
+      });
+      if (response == 'appropriate'){
+        handleSearch(event);
+      } else {
+        return false;
+      }
+    }
+
+    function handleSearch(event) {
+      event.preventDefault();
+      const query = document.getElementById('query').value;
+      if (query) {
+        window.location.href = `results.html?q=${encodeURIComponent(query)}`;
+      }
+    }
+</script>
+
+</body>
+</html>

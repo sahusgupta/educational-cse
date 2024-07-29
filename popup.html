@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Set Erudia as Default</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Erudia</h1>
+  <p>Click the button below to set Erudia as your default search engine.</p>
+  <button id="set-default">Set Default</button>
+  <script>
+    document.getElementById('set-default').addEventListener('click', function() {
+      chrome.tabs.create({ url: "https://erudia.com" });
+    });
+  </script>
+</body>
+</html>
